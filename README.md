@@ -24,6 +24,7 @@ This fork not only restores functionality but also modernizes and improves the a
 - **Dependency cleanup**: Removed unused dependencies and updated the remaining ones.
 - **Code adjustments**: Fixed `index.ts` to be compatible with updated libraries.
 - **Added `.nvmrc`**: Specifies the Node version for consistency across environments.
+- **Updated messages**: Improved the messages for better clarity.
 
 These updates ensure the action is compatible with modern tooling and workflows, making it more efficient and easier to maintain.
 
