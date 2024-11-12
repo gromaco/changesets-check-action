@@ -74,10 +74,20 @@ const getHasChangeset = (
     core.setFailed("Please add the GITHUB_TOKEN to the changesets action");
     return;
   }
-  let repo = `${github.context.repo.owner}/${github.context.repo.repo}`;
+
 
   const octokit = github.getOctokit(githubToken);
   console.log(JSON.stringify(github.context.payload, null, 2));
+
+  const pullRequest = github.context.payload.pull_request;
+
+  if (!pullRequest) {
+    core.setFailed("This action only works on pull_request events.");
+    return;
+  }
+
+  const latestCommitSha = pullRequest.head.sha;
+
   const [commentId, hasChangeset] = await Promise.all([
     getCommentId(octokit, {
       issue_number: github.context.payload.pull_request!.number,
@@ -90,8 +100,8 @@ const getHasChangeset = (
   ]);
 
   let message = hasChangeset
-    ? getApproveMessage(github.context.sha)
-    : getAbsentMessage(github.context.sha);
+    ? getApproveMessage(latestCommitSha)
+    : getAbsentMessage(latestCommitSha);
 
   if (commentId) {
     return octokit.rest.issues.updateComment({
