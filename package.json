@@ -5,7 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@vercel/ncc": "^0.38.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.7.2"
   },
   "scripts": {
     "build": "yarn tsc && ncc build dist/index.js -o dist"
