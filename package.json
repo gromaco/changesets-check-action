@@ -16,7 +16,7 @@
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-typescript": "^7.26.0",
-    "@octokit/rest": "^21.0.2",
+    "@octokit/rest": "^21.1.0",
     "@types/node": "^22.9.0",
     "human-id": "^4.1.1"
   }
